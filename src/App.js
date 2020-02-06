@@ -2,9 +2,47 @@ import React from "react";
 import { Table } from "antd";
 import "antd/dist/antd.css";
 import "./styles.css";
+import { SubjectClass } from "./utils";
 
 export default function App() {
-  //const subjects = ["Maths", "English", "Shona", "Science", "Accounts"];
+  const subjects = [
+    {
+      text: "Maths",
+      value: "Maths"
+    },
+    {
+      text: "Physics",
+      value: "Physics"
+    },
+    {
+      text: "Chemistry",
+      value: "Chemistry"
+    },
+    {
+      text: "Shona",
+      value: "Shona"
+    },
+    {
+      text: "Geography",
+      value: "Geography"
+    },
+    {
+      text: "History",
+      value: "History"
+    },
+    {
+      text: "Accounts",
+      value: "Accounts"
+    },
+    {
+      text: "Business",
+      value: "Business"
+    },
+    {
+      text: "Commerce",
+      value: "Commerce"
+    }
+  ];
   const students = [
     {
       key: "1",
@@ -14,24 +52,16 @@ export default function App() {
       gender: "Male",
       results: [
         {
-          name: "Maths",
+          subject: "History",
           mark: 80
         },
         {
-          name: "English",
+          subject: "Shona",
           mark: 45
         },
         {
-          name: "Shona",
+          subject: "Geography",
           mark: 35
-        },
-        {
-          name: "Science",
-          mark: 65
-        },
-        {
-          name: "Accounts",
-          mark: 75
         }
       ]
     },
@@ -43,24 +73,16 @@ export default function App() {
       gender: "Female",
       results: [
         {
-          name: "Maths",
+          subject: "Accounts",
           mark: 35
         },
         {
-          name: "English",
-          mark: 75
-        },
-        {
-          name: "Shona",
+          subject: "Geography",
           mark: 90
         },
         {
-          name: "Science",
+          subject: "Business",
           mark: 65
-        },
-        {
-          name: "Accounts",
-          mark: 55
         }
       ]
     },
@@ -72,23 +94,36 @@ export default function App() {
       gender: "Male",
       results: [
         {
-          name: "Maths",
+          subject: "Maths",
           mark: 65
         },
         {
-          name: "English",
+          subject: "Physics",
           mark: 55
         },
         {
-          name: "Shona",
-          mark: 63
-        },
-        {
-          name: "Science",
+          subject: "Chemistry",
           mark: 64
+        }
+      ]
+    },
+    {
+      key: "34",
+      name: "Gamuchirai Green",
+      age: 13,
+      address: "Bryanston, 300 Sloane",
+      gender: "Male",
+      results: [
+        {
+          subject: "Accounts",
+          mark: 65
         },
         {
-          name: "Accounts",
+          subject: "Business",
+          mark: 75
+        },
+        {
+          subject: "Commerce",
           mark: 68
         }
       ]
@@ -115,6 +150,28 @@ export default function App() {
       title: "Gender",
       dataIndex: "gender",
       key: "gender"
+    },
+    {
+      title: "Results",
+      dataIndex: "results",
+      key: "results",
+      render: results => (
+        <>
+          {results.map((result, index) => (
+            <>
+              <span className={SubjectClass(result.subject)}>
+                {result.mark}
+              </span>
+              {results.length - 1 !== index && <span>,</span>}
+            </>
+          ))}
+        </>
+      ),
+      filters: subjects,
+      onFilter: (value, record) => {
+        const results = record.results.map(r => r.subject);
+        return results.includes(value.toString());
+      }
     }
   ];
 

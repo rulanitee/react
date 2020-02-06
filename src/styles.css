@@ -2,3 +2,39 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.subject-maths {
+  color: rgba(63, 191, 127);
+}
+
+.subject-physics {
+  color: rgba(37, 95, 38);
+}
+
+.subject-chemistry {
+  color: rgba(13, 190, 16);
+}
+
+.subject-shona {
+  color: rgba(38, 37, 79);
+}
+
+.subject-geography {
+  color: rgba(107, 104, 241);
+}
+
+.subject-history {
+  color: rgba(5, 3, 108);
+}
+
+.subject-accounts {
+  color: rgba(112, 50, 57);
+}
+
+.subject-business {
+  color: rgba(235, 19, 44);
+}
+
+.subject-commerce {
+  color: rgba(169, 4, 23);
+}
